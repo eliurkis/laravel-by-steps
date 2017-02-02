@@ -36,4 +36,32 @@ class PostController extends Controller
 
         return redirect('/posts');
     }
+
+    public function edit($id)
+    {
+        $post = Post::find($id);
+
+        return view('post.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Option #1
+//        $post = Post::find($id);
+//        $post->update([
+//            'title'  => $request->get('title'),
+//            'body'   => $request->get('body'),
+//            'author' => $request->get('author'),
+//        ]);
+
+        // Option #2
+        Post::where('id', $id)
+            ->update([
+                'title'  => $request->get('title'),
+                'body'   => $request->get('body'),
+                'author' => $request->get('author'),
+            ]);
+
+        return redirect('/posts');
+    }
 }
