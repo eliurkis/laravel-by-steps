@@ -12,3 +12,5 @@ Route::post('/posts/create', 'PostController@store');
 
 Route::get('/posts/edit/{id}', 'PostController@edit');
 Route::post('/posts/edit/{id}', 'PostController@update');
+
+Route::get('/posts/delete/{id}', 'PostController@destroy');

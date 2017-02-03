@@ -28,13 +28,13 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $post = Post::create([
+        Post::create([
             'title'  => $request->get('title'),
             'body'   => $request->get('body'),
             'author' => $request->get('author'),
         ]);
 
-        return redirect('/posts');
+        return redirect('/posts')->with('message', 'The post has been created!');
     }
 
     public function edit($id)
@@ -62,6 +62,13 @@ class PostController extends Controller
                 'author' => $request->get('author'),
             ]);
 
-        return redirect('/posts');
+        return redirect('/posts')->with('message', 'The post has been updated!');
+    }
+
+    public function destroy($id)
+    {
+        Post::destroy($id);
+
+        return redirect('/posts')->with('message', 'The post has been deleted!');
     }
 }

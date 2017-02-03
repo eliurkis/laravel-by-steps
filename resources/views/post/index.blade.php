@@ -2,6 +2,10 @@
 
 @section('content')
 
+    @if (session('message'))
+        <p>{{ session('message') }}</p>
+    @endif
+
     <table border="1" cellpadding="5px">
         <tr>
             <th>Title</th>
@@ -15,7 +19,7 @@
                 <td>
                     <a href="{{ url('/posts/show/' . $post->id) }}">Detalles</a>
                     <a href="{{ url('/posts/edit/' . $post->id) }}">Editar</a>
-                    <a href="#">Eliminar</a>
+                    <a href="{{ url('/posts/delete/' . $post->id) }}" onclick="return confirm('Esta seguro?')">Eliminar</a>
                 </td>
             </tr>
         @endforeach
