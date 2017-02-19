@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -21,16 +21,16 @@
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->author }}</td>
                 <td>
-                    <a class="btn btn-default btn-sm" href="{{ url('/posts/show/' . $post->id) }}">Detalles</a>
-                    <a class="btn btn-primary btn-sm" href="{{ url('/posts/edit/' . $post->id) }}">Editar</a>
-                    <a class="btn btn-danger btn-sm" href="{{ url('/posts/delete/' . $post->id) }}" onclick="return confirm('Esta seguro?')">Eliminar</a>
+                    <a class="btn btn-default btn-sm" href="{{ route('admin.posts.show', [$post->id]) }}">Detalles</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('admin.posts.edit', [$post->id]) }}">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="{{ route('admin.posts.delete', [$post->id]) }}" onclick="return confirm('Esta seguro?')">Eliminar</a>
                 </td>
             </tr>
         @endforeach
     </table>
 
     <p>
-        <a class="btn btn-default" href="{{ url('/posts/create') }}" role="button">Add a New Post</a>
+        <a class="btn btn-default" href="{{ route('admin.posts.create') }}" role="button">Add a New Post</a>
     </p>
 
 @endsection

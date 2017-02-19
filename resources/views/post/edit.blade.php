@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -22,7 +22,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Edit Post</button>
-        <a class="btn btn-default" href="{{ url('/posts') }}">Cancel</a>
+        <a class="btn btn-default" href="{{ route('admin.posts.index') }}">Cancel</a>
     </form>
 
 @endsection

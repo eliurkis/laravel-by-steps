@@ -1,16 +1,16 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('/posts', 'PostController@index');
-Route::get('/posts/show/{id}', 'PostController@show');
+/* Administration Routes */
 
-Route::get('/posts/create', 'PostController@create');
-Route::post('/posts/create', 'PostController@store');
+Route::get('/admin/posts', 'Admin\PostController@index')->name('admin.posts.index');
+Route::get('/admin/posts/show/{id}', 'Admin\PostController@show')->name('admin.posts.show');
 
-Route::get('/posts/edit/{id}', 'PostController@edit');
-Route::post('/posts/edit/{id}', 'PostController@update');
+Route::get('/admin/posts/create', 'Admin\PostController@create')->name('admin.posts.create');
+Route::post('/admin/posts/create', 'Admin\PostController@store')->name('admin.posts.create');
 
-Route::get('/posts/delete/{id}', 'PostController@destroy');
+Route::get('/admin/posts/edit/{id}', 'Admin\PostController@edit')->name('admin.posts.edit');
+Route::post('/admin/posts/edit/{id}', 'Admin\PostController@update')->name('admin.posts.edit');
+
+Route::get('/admin/posts/delete/{id}', 'Admin\PostController@destroy')->name('admin.posts.delete');

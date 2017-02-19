@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,9 @@ class PostController extends Controller
             'author' => $request->get('author'),
         ]);
 
-        return redirect('/posts')->with('message', 'The post has been created!');
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('message', 'The post has been created!');
     }
 
     public function edit($id)
@@ -62,13 +65,17 @@ class PostController extends Controller
                 'author' => $request->get('author'),
             ]);
 
-        return redirect('/posts')->with('message', 'The post has been updated!');
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('message', 'The post has been updated!');
     }
 
     public function destroy($id)
     {
         Post::destroy($id);
 
-        return redirect('/posts')->with('message', 'The post has been deleted!');
+        return redirect()
+            ->route('admin.posts.index')
+            ->with('message', 'The post has been deleted!');
     }
 }
