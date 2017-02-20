@@ -11,14 +11,17 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Help</a></li>
+                <li>
+                    <a href="{{ url('/logout') }}"
+                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
         </div>
     </div>
 </nav>

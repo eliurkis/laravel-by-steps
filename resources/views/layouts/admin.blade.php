@@ -25,14 +25,22 @@
 
 <body>
 
-    @include('layouts.partials.nav')
+    @if (Auth::check())
+        @include('layouts.partials.nav')
+    @endif
 
     <div class="container-fluid">
         <div class="row">
-            @include('layouts.partials.sidebar')
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                @yield('content')
-            </div>
+            @if (Auth::check())
+                @include('layouts.partials.sidebar')
+                <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+                    @yield('content')
+                </div>
+            @else
+                <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 main">
+                    @yield('content')
+                </div>
+            @endif
         </div>
     </div>
 
